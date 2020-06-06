@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-//import "boostrap/dist/css/boostrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import ContactPage from "./pages/ContactPage";
@@ -19,7 +19,7 @@ function App() {
     <NavBar/>
     <SideCart/>
     <Sidebar/>
-    <Footer/>
+   
     <Switch>
     <Route path="/" exact component={HomePage}/>
     <Route path="/about" exact component={AboutPage}/>
@@ -29,6 +29,7 @@ function App() {
     <Route path="/cart" exact component={CartPage}/>
     <Route component={Default}/>
     </Switch>
+    <Footer/>
     </>
   );
 }

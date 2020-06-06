@@ -1,9 +1,14 @@
 import React from 'react'
-
-export default function AboutPage() {
+import Info from "../components/AboutPage/Info"
+import Hero from "../components/Hero"
+import aboutBcg from "../images/aboutBcg.jpeg";
+ export default function AboutPage() {
   return (
     <>
-      hello from about
+     <Hero img={aboutBcg}>
+
+     </Hero>
+     <Info></Info>
     </>
   )
 }

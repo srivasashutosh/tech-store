@@ -1,9 +1,13 @@
 import React from 'react'
-
-export default function ProductsPage() {
+import Products from "../components/ProductPage/Products"
+import Hero from "../components/Hero"
+import productBcg from "../images/productsBcg.jpeg"
+import { ProductProvider } from '../context/context'
+ export default function ProductsPage() {
   return (
     <>
-      hello from Products page
+    <Hero img={productBcg}></Hero>
+     <Products></Products>
     </>
   )
 }

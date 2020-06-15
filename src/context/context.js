@@ -135,7 +135,7 @@ class ProductProvider extends Component {
 
   handleSideBar = () => {
     this.setState({
-      sideBarOpen: !this.state.sideBarOpen,
+      sidebarOpen: !this.state.sidebarOpen,
     });
   };
 
@@ -156,6 +156,23 @@ class ProductProvider extends Component {
       cartOpen: true,
     });
   };
+
+  increment = ()=>{
+
+  }
+
+  decrement = ()=>{
+
+  }
+
+  removeItem = ()=>{
+
+  }
+
+  clearCart = ()=>{
+
+
+  }
   render() {
     return (
       <ProductContext.Provider
@@ -167,6 +184,10 @@ class ProductProvider extends Component {
           openCart: this.openCart,
           addToCart: this.addToCart,
           setSingleProduct: this.setSingleProduct,
+          increment : this.increment,
+          decrement: this.decrement,
+          removeItem: this.removeItem,
+          clearCart : this.clearCart
         }}
       >
         {this.props.children}

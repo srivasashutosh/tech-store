@@ -20,6 +20,12 @@ class ProductProvider extends Component {
     featuredProducts: [],
     singleProducts: {},
     loading: false,
+    search : '',
+    price : 0,
+    minPrice : 0,
+    maxPrice : 0,
+    company : "all",
+    shipping : false
   };
 
   componentDidMount() {
@@ -38,6 +44,11 @@ class ProductProvider extends Component {
     let featuredProducts = storeProducts.filter(
       (item) => item.featured === true
     );
+
+    let maxPrice = Math.max(...storeProducts.map(item=> item.price))
+
+
+
     this.setState({
       storeProducts: storeProducts,
       filteredProducts: storeProducts,
@@ -45,6 +56,8 @@ class ProductProvider extends Component {
       cart: this.getStorageCart(),
       singleProduct: this.getStorageProduct(),
       loading: false,
+      price : maxPrice,
+      maxPrice: maxPrice
     },()=>{this.addTotals()});
   };
 
@@ -135,7 +148,7 @@ class ProductProvider extends Component {
 
   handleSideBar = () => {
     this.setState({
-      sidebarOpen: !this.state.sidebarOpen,
+      sideBarOpen: !this.state.sideBarOpen,
     });
   };
 
@@ -175,16 +188,60 @@ class ProductProvider extends Component {
   }
 
   decrement = (id)=>{
+    let tempCart = [...this.state.cart]
+    const cartItem = tempCart.find(item=>item.id===id)
+    cartItem.count= cartItem.count-1;
+    if(cartItem.count===0){
+      this.removeItem(id)
+    }else{
+      cartItem.total = cartItem.price*cartItem.count
+    cartItem.total=parseFloat((cartItem.total.toFixed(2)))
+    this.setState(()=>{
+      return {
+        cart : [...tempCart]
+      }
+    },
+    ()=>{
+      this.addTotals();
+      this.syncStorage();
+    })
+    }
+    
+    
 
   }
 
-  removeItem = ()=>{
-
+  removeItem = (id)=>{
+    let tempCart = [...this.state.cart]
+    tempCart = tempCart.filter(item=>item.id!==id)
+    this.setState({
+      cart : [...tempCart]
+    },
+    
+    ()=>{
+      this.addTotals();
+      this.syncStorage();
+    })
   }
 
   clearCart = ()=>{
+    this.setState({
+      cart : []
+    },
+    
+    ()=>{
+      this.addTotals();
+      this.syncStorage();
+    })
 
+  }
 
+  handleChange = (event)=>{
+    console.log(event)
+  }
+
+  sortData = ()=>{
+    
   }
   render() {
     return (
@@ -200,7 +257,8 @@ class ProductProvider extends Component {
           increment : this.increment,
           decrement: this.decrement,
           removeItem: this.removeItem,
-          clearCart : this.clearCart
+          clearCart : this.clearCart,
+          handleChange : this.handleCart
         }}
       >
         {this.props.children}

@@ -19,7 +19,7 @@ export default function CartItem({
           src={image}
           width="60px"
           className="img-fluid"
-          alt="product image"
+          alt="cart product"
         />
       </div>
 

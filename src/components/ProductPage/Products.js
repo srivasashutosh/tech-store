@@ -2,7 +2,7 @@ import React from "react";
 import { ProductConsumer } from "../../context";
 import Title from "../Title";
 import Product from "../Products";
-import FilterProducts from "./FilterProducts";
+import ProductFilter from "./ProductFilter";
 export default function Products() {
   return (
     <ProductConsumer>
@@ -12,7 +12,7 @@ export default function Products() {
           <section className="py-5">
             <div className="container">
               <Title center title="our products"></Title>
-              <FilterProducts />
+              <ProductFilter />
 
               <div className="row">
                 <div className="col-10 mx-auto">

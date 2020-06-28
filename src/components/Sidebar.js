@@ -41,7 +41,7 @@ const SideWrapper = styled.nav`
   z-index : 1;
   border-right : 4px solid var(--primaryColor);
   transition : var(--mainTransition);
-transform : ${props=> props.show ?"translateX(0px)" : "translateX(-100%)"};
+transform : ${props=> props.show ?"translateX(0)" : "translateX(-100%)"};
   ul{
     list-style-type: none;
     padding :0 !important;

@@ -258,19 +258,23 @@ class ProductProvider extends Component {
     }
 
     if(search.length > 0){
-      tempProducts = tempProducts.filter(item=> {
-        let tempSearch = search.toLowerCase();
-        let tempTitle = item.title.toLowerCase().slice(0,search.length);
-        if(tempSearch===tempTitle){
-          return item
-        }
-      })
+      tempProducts = tempProducts.filter(item=> this.getFilterData(item,search))
     }
 
     this.setState({
       filteredProducts : tempProducts
     })
   }
+
+  getFilterData = (item,search) =>{
+      
+    let tempSearch = search.toLowerCase();
+    let tempTitle = item.title.toLowerCase().slice(0,search.length);
+    if(tempSearch===tempTitle){
+      return item
+    }
+  
+}
   render() {
     return (
       <ProductContext.Provider

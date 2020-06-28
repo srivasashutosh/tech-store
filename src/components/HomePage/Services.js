@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import {FaDolly, FaRedo, FaDollarSign} from 'react-icons/fa'
-import { icons } from 'react-icons/lib/cjs'
+
 export default class Services extends Component {
     state = 
     {services:[{
